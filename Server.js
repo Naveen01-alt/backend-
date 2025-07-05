@@ -7,14 +7,14 @@ const app = express();
 
 // CORS Configuration
 const allowedOrigins = [
-  "https://milkmart-io.vercel.app",
+  "https://milkmart-app.vercel.app/",
   "http://localhost:5173"
 ];
 
 app.use(cors({
   origin: [
     "http://localhost:3000",          // For local frontend
-    "https://milkmart-io.vercel.app"  // For deployed frontend
+    "https://milkmart-app.vercel.app"  // For deployed frontend
   ],
   methods: ["GET", "POST"],
   credentials: true

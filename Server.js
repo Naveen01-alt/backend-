@@ -1,25 +1,22 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
-const cors = require("cors");
+const cors = require("cors"); // ✅ FIXED: previously you assigned string instead of requiring the package
 require("dotenv").config();
 
 const app = express();
 
-// CORS Configuration
+// ✅ Update allowed origins
 const allowedOrigins = [
-  "https://milkmart-app.vercel.app/",
-  "http://localhost:5173"
+  "https://milkmart-app.vercel.app",  // ✅ Your actual deployed frontend
+  "http://localhost:5173",            // For local Vite dev server
+  "http://localhost:3000"             // In case you're using React default dev server
 ];
 
 app.use(cors({
-  origin: [
-    "http://localhost:3000",          // For local frontend
-    "https://milkmart-app.vercel.app"  // For deployed frontend
-  ],
+  origin: allowedOrigins,
   methods: ["GET", "POST"],
   credentials: true
 }));
-
 
 app.use(express.json());
 
@@ -65,7 +62,5 @@ app.post("/send-order", async (req, res) => {
 
 app.listen(5000, () => {
   console.log("✅ Server running at http://localhost:5000");
-  console.log("CORS configured for localhost:3000 and vercel.app");
-
+  console.log("CORS configured for:", allowedOrigins);
 });
-

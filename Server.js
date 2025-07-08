@@ -7,9 +7,7 @@ const app = express();
 
 // ✅ Update allowed origins
 const allowedOrigins = [
-  "https://milkmart-app.vercel.app",  // ✅ Your actual deployed frontend
-  "http://localhost:5173",            // For local Vite dev server
-  "http://localhost:3000"             // In case you're using React default dev server
+  "https://milk-mart-5auf.vercel.app"     
 ];
 
 app.use(cors({
